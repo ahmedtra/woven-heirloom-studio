@@ -15,12 +15,12 @@ const Cart = () => {
         <Navigation />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center max-w-md px-4">
-            <h1 className="text-3xl font-serif font-bold mb-4">Your Cart is Empty</h1>
+            <h1 className="text-3xl font-serif font-bold mb-4">Votre panier est vide</h1>
             <p className="text-muted-foreground mb-8">
-              Start adding some beautiful handmade bags to your cart
+              Ajoutez de magnifiques sacs faits main à votre panier
             </p>
             <Link to="/shop">
-              <Button size="lg">Continue Shopping</Button>
+              <Button size="lg">Poursuivre vos achats</Button>
             </Link>
           </div>
         </main>
@@ -36,7 +36,7 @@ const Cart = () => {
       <main className="flex-1">
         <div className="bg-muted/30 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold">Shopping Cart</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold">Panier</h1>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ const Cart = () => {
                             <h3 className="font-serif font-semibold text-lg">{item.name}</h3>
                             <p className="text-sm text-muted-foreground">{item.category}</p>
                             {item.selectedSize && (
-                              <p className="text-sm text-muted-foreground">Size: {item.selectedSize}</p>
+                              <p className="text-sm text-muted-foreground">Taille : {item.selectedSize}</p>
                             )}
                           </div>
                           <Button
@@ -108,16 +108,16 @@ const Cart = () => {
             <div>
               <Card className="sticky top-24">
                 <CardContent className="p-6">
-                  <h2 className="font-serif text-xl font-semibold mb-6">Order Summary</h2>
+                  <h2 className="font-serif text-xl font-semibold mb-6">Récapitulatif de commande</h2>
                   
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Subtotal</span>
+                      <span className="text-muted-foreground">Sous-total</span>
                       <span>${getCartTotal()}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span>FREE</span>
+                      <span className="text-muted-foreground">Livraison</span>
+                      <span>OFFERT</span>
                     </div>
                     <div className="pt-3 border-t">
                       <div className="flex justify-between font-semibold text-lg">
@@ -129,12 +129,12 @@ const Cart = () => {
 
                   <Link to="/checkout">
                     <Button size="lg" className="w-full mb-3">
-                      Proceed to Checkout
+                      Passer au paiement
                     </Button>
                   </Link>
                   <Link to="/shop">
                     <Button variant="outline" size="lg" className="w-full">
-                      Continue Shopping
+                      Poursuivre vos achats
                     </Button>
                   </Link>
                 </CardContent>

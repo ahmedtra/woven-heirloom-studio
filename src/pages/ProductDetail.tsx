@@ -21,9 +21,9 @@ const ProductDetail = () => {
         <Navigation />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-serif font-bold mb-4">Product Not Found</h1>
+            <h1 className="text-2xl font-serif font-bold mb-4">Produit introuvable</h1>
             <Link to="/shop">
-              <Button>Return to Shop</Button>
+              <Button>Retour à la boutique</Button>
             </Link>
           </div>
         </div>
@@ -44,7 +44,7 @@ const ProductDetail = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link to="/shop" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-smooth">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Shop
+            Retour à la boutique
           </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -68,21 +68,21 @@ const ProductDetail = () => {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-semibold mb-2">Details</h3>
+                  <h3 className="font-semibold mb-2">Détails</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li><span className="font-medium text-foreground">Material:</span> {product.material}</li>
-                    <li><span className="font-medium text-foreground">Color:</span> {product.color}</li>
-                    <li><span className="font-medium text-foreground">Style:</span> {product.category}</li>
-                    <li><span className="font-medium text-foreground">Availability:</span> {product.inStock ? "In Stock" : "Out of Stock"}</li>
+                    <li><span className="font-medium text-foreground">Matière :</span> {product.material}</li>
+                    <li><span className="font-medium text-foreground">Couleur :</span> {product.color}</li>
+                    <li><span className="font-medium text-foreground">Style :</span> {product.category}</li>
+                    <li><span className="font-medium text-foreground">Disponibilité :</span> {product.inStock ? "En stock" : "Rupture de stock"}</li>
                   </ul>
                 </div>
 
                 {product.sizes && product.sizes.length > 1 && (
                   <div>
-                    <label className="font-semibold mb-2 block">Size</label>
+                    <label className="font-semibold mb-2 block">Taille</label>
                     <Select value={selectedSize} onValueChange={setSelectedSize}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Size" />
+                        <SelectValue placeholder="Choisir une taille" />
                       </SelectTrigger>
                       <SelectContent className="bg-card z-50">
                         {product.sizes.map((size) => (
@@ -96,7 +96,7 @@ const ProductDetail = () => {
                 )}
 
                 <div>
-                  <label className="font-semibold mb-2 block">Quantity</label>
+                  <label className="font-semibold mb-2 block">Quantité</label>
                   <div className="flex items-center space-x-4">
                     <Button
                       variant="outline"
@@ -122,17 +122,17 @@ const ProductDetail = () => {
                   onClick={handleAddToCart}
                   disabled={!product.inStock}
                 >
-                  {product.inStock ? "Add to Cart" : "Out of Stock"}
+                  {product.inStock ? "Ajouter au panier" : "Rupture de stock"}
                 </Button>
               </div>
 
               <div className="mt-8 pt-8 border-t">
-                <h3 className="font-semibold mb-4">Care Instructions</h3>
+                <h3 className="font-semibold mb-4">Conseils d'entretien</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Spot clean only with mild soap</li>
-                  <li>• Avoid prolonged sun exposure</li>
-                  <li>• Store in dust bag when not in use</li>
-                  <li>• Condition leather accents regularly</li>
+                  <li>• Nettoyer uniquement en tamponnant avec un savon doux</li>
+                  <li>• Éviter une exposition prolongée au soleil</li>
+                  <li>• Ranger dans une housse de protection lorsqu'il n'est pas utilisé</li>
+                  <li>• Nourrir régulièrement les finitions en cuir</li>
                 </ul>
               </div>
             </div>

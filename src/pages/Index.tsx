@@ -19,7 +19,7 @@ const Index = () => {
           <div className="absolute inset-0">
             <img
               src={heroImage}
-              alt="Handmade crochet bags"
+              alt="Sacs au crochet faits main"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
@@ -28,20 +28,20 @@ const Index = () => {
           <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                Handmade,<br />Heartfelt
+                Fait main,<br />Avec cœur
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-                Discover Your Next Heirloom Bag
+                Découvrez votre prochain sac à transmettre
               </p>
               <div className="flex gap-4">
                 <Link to="/shop">
                   <Button size="lg" className="text-lg px-8">
-                    Shop Collection
+                    Découvrir la collection
                   </Button>
                 </Link>
                 <Link to="/about">
                   <Button size="lg" variant="outline" className="text-lg px-8">
-                    Our Story
+                    Notre histoire
                   </Button>
                 </Link>
               </div>
@@ -52,10 +52,10 @@ const Index = () => {
         {/* Featured Products */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold mb-4">Featured Collection</h2>
+            <h2 className="text-4xl font-serif font-bold mb-4">Collection à la une</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Each bag is meticulously crafted by hand, combining traditional crochet techniques
-              with premium leather accents for a timeless look.
+              Chaque sac est confectionné avec un soin méticuleux, associant des techniques traditionnelles de crochet
+              à des finitions en cuir de qualité pour un style intemporel.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Link to="/shop">
               <Button size="lg" variant="outline">
-                View All Products
+                Voir tous les produits
               </Button>
             </Link>
           </div>
@@ -79,26 +79,26 @@ const Index = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-serif font-bold mb-6">The Art of Handmade</h2>
+                <h2 className="text-4xl font-serif font-bold mb-6">L'art du fait main</h2>
                 <p className="text-lg text-muted-foreground mb-4">
-                  Every bag in our collection is a labor of love, created through the time-honored
-                  craft of crochet. We combine soft, high-quality yarns with premium leather
-                  accents to create pieces that are both beautiful and functional.
+                  Chaque sac de notre collection est un travail d'amour, issu du savoir-faire ancestral du crochet.
+                  Nous associons des fils doux et de haute qualité à des finitions en cuir premium pour créer des
+                  pièces à la fois belles et fonctionnelles.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Our commitment to traditional maroquinerie techniques ensures that each bag
-                  is not just an accessory, but an heirloom piece that will last for generations.
+                  Notre engagement envers les techniques traditionnelles de maroquinerie garantit que chaque sac
+                  n'est pas qu'un simple accessoire, mais une pièce patrimoniale conçue pour durer des générations.
                 </p>
                 <Link to="/about">
                   <Button variant="secondary">
-                    Learn More About Our Craft
+                    En savoir plus sur notre savoir-faire
                   </Button>
                 </Link>
               </div>
               <div className="relative h-[400px] rounded-lg overflow-hidden">
                 <img
                   src={heroImage}
-                  alt="Craftsmanship detail"
+                  alt="Détail du savoir-faire"
                   className="w-full h-full object-cover"
                 />
               </div>

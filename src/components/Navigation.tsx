@@ -12,18 +12,18 @@ const Navigation = () => {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-serif font-bold text-primary">Artisan Crochet</span>
+            <span className="text-2xl font-serif font-bold text-primary">Asmouta</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-sm font-medium transition-smooth hover:text-primary">
-              Home
+              Accueil
             </Link>
             <Link to="/shop" className="text-sm font-medium transition-smooth hover:text-primary">
-              Shop
+              Boutique
             </Link>
             <Link to="/about" className="text-sm font-medium transition-smooth hover:text-primary">
-              About
+              À propos
             </Link>
             <Link to="/contact" className="text-sm font-medium transition-smooth hover:text-primary">
               Contact

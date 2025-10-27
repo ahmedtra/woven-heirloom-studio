@@ -31,7 +31,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <CardFooter className="p-4 pt-0">
         <Link to={`/product/${product.id}`} className="w-full">
           <Button className="w-full" variant="outline">
-            View Details
+            Voir les détails
           </Button>
         </Link>
       </CardFooter>

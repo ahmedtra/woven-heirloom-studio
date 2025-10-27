@@ -36,8 +36,8 @@ const Checkout = () => {
         <Navigation />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-serif font-bold mb-4">No Items in Cart</h1>
-            <Button onClick={() => navigate("/shop")}>Continue Shopping</Button>
+            <h1 className="text-2xl font-serif font-bold mb-4">Aucun article dans le panier</h1>
+            <Button onClick={() => navigate("/shop")}>Poursuivre vos achats</Button>
           </div>
         </main>
         <Footer />
@@ -47,8 +47,8 @@ const Checkout = () => {
 
   const handleSubmitOrder = () => {
     toast({
-      title: "Order Placed Successfully!",
-      description: "Thank you for your purchase. You'll receive a confirmation email shortly.",
+      title: "Commande passée avec succès !",
+      description: "Merci pour votre achat. Vous recevrez bientôt un e-mail de confirmation.",
     });
     clearCart();
     navigate("/");
@@ -61,7 +61,7 @@ const Checkout = () => {
       <main className="flex-1">
         <div className="bg-muted/30 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold">Checkout</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold">Paiement</h1>
           </div>
         </div>
 
@@ -73,21 +73,21 @@ const Checkout = () => {
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                   1
                 </div>
-                <span className="ml-2 font-medium">Shipping</span>
+                <span className="ml-2 font-medium">Livraison</span>
               </div>
               <div className="w-12 h-0.5 bg-border" />
               <div className={`flex items-center ${step >= 2 ? 'text-primary' : 'text-muted-foreground'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                   2
                 </div>
-                <span className="ml-2 font-medium">Payment</span>
+                <span className="ml-2 font-medium">Paiement</span>
               </div>
               <div className="w-12 h-0.5 bg-border" />
               <div className={`flex items-center ${step >= 3 ? 'text-primary' : 'text-muted-foreground'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                   3
                 </div>
-                <span className="ml-2 font-medium">Review</span>
+                <span className="ml-2 font-medium">Validation</span>
               </div>
             </div>
           </div>
@@ -98,70 +98,70 @@ const Checkout = () => {
               {step === 1 && (
                 <Card>
                   <CardHeader>
-                    <CardTitle>Shipping Information</CardTitle>
+                    <CardTitle>Informations de livraison</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="fullName">Full Name</Label>
+                        <Label htmlFor="fullName">Nom complet</Label>
                         <Input
                           id="fullName"
                           value={shippingInfo.fullName}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, fullName: e.target.value })}
-                          placeholder="John Doe"
+                          placeholder="Jean Dupont"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email">E-mail</Label>
                         <Input
                           id="email"
                           type="email"
                           value={shippingInfo.email}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, email: e.target.value })}
-                          placeholder="john@example.com"
+                          placeholder="jean@example.com"
                         />
                       </div>
                     </div>
                     <div>
-                      <Label htmlFor="address">Address</Label>
+                      <Label htmlFor="address">Adresse</Label>
                       <Input
                         id="address"
                         value={shippingInfo.address}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
-                        placeholder="123 Main Street"
+                        placeholder="123 rue Principale"
                       />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
-                        <Label htmlFor="city">City</Label>
+                        <Label htmlFor="city">Ville</Label>
                         <Input
                           id="city"
                           value={shippingInfo.city}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, city: e.target.value })}
-                          placeholder="New York"
+                          placeholder="Paris"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="postalCode">Postal Code</Label>
+                        <Label htmlFor="postalCode">Code postal</Label>
                         <Input
                           id="postalCode"
                           value={shippingInfo.postalCode}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, postalCode: e.target.value })}
-                          placeholder="10001"
+                          placeholder="75001"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="country">Country</Label>
+                        <Label htmlFor="country">Pays</Label>
                         <Input
                           id="country"
                           value={shippingInfo.country}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, country: e.target.value })}
-                          placeholder="United States"
+                          placeholder="France"
                         />
                       </div>
                     </div>
                     <Button onClick={() => setStep(2)} className="w-full">
-                      Continue to Payment
+                      Continuer vers le paiement
                     </Button>
                   </CardContent>
                 </Card>
@@ -171,20 +171,20 @@ const Checkout = () => {
               {step === 2 && (
                 <Card>
                   <CardHeader>
-                    <CardTitle>Payment Information</CardTitle>
+                    <CardTitle>Informations de paiement</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <Label htmlFor="cardName">Name on Card</Label>
+                      <Label htmlFor="cardName">Nom sur la carte</Label>
                       <Input
                         id="cardName"
                         value={paymentInfo.cardName}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, cardName: e.target.value })}
-                        placeholder="John Doe"
+                        placeholder="Jean Dupont"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="cardNumber">Card Number</Label>
+                      <Label htmlFor="cardNumber">Numéro de carte</Label>
                       <Input
                         id="cardNumber"
                         value={paymentInfo.cardNumber}
@@ -194,12 +194,12 @@ const Checkout = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="expiryDate">Expiry Date</Label>
+                        <Label htmlFor="expiryDate">Date d'expiration</Label>
                         <Input
                           id="expiryDate"
                           value={paymentInfo.expiryDate}
                           onChange={(e) => setPaymentInfo({ ...paymentInfo, expiryDate: e.target.value })}
-                          placeholder="MM/YY"
+                          placeholder="MM/AA"
                         />
                       </div>
                       <div>
@@ -214,10 +214,10 @@ const Checkout = () => {
                     </div>
                     <div className="flex gap-4">
                       <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-                        Back
+                        Retour
                       </Button>
                       <Button onClick={() => setStep(3)} className="flex-1">
-                        Review Order
+                        Vérifier la commande
                       </Button>
                     </div>
                   </CardContent>
@@ -228,11 +228,11 @@ const Checkout = () => {
               {step === 3 && (
                 <Card>
                   <CardHeader>
-                    <CardTitle>Review Your Order</CardTitle>
+                    <CardTitle>Vérifiez votre commande</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
-                      <h3 className="font-semibold mb-2">Shipping Address</h3>
+                      <h3 className="font-semibold mb-2">Adresse de livraison</h3>
                       <p className="text-sm text-muted-foreground">
                         {shippingInfo.fullName}<br />
                         {shippingInfo.address}<br />
@@ -241,13 +241,13 @@ const Checkout = () => {
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Payment Method</h3>
+                      <h3 className="font-semibold mb-2">Mode de paiement</h3>
                       <p className="text-sm text-muted-foreground">
-                        Card ending in {paymentInfo.cardNumber.slice(-4)}
+                        Carte se terminant par {paymentInfo.cardNumber.slice(-4)}
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Order Items</h3>
+                      <h3 className="font-semibold mb-2">Articles de la commande</h3>
                       <div className="space-y-2">
                         {items.map((item) => (
                           <div key={item.id} className="flex justify-between text-sm">
@@ -259,10 +259,10 @@ const Checkout = () => {
                     </div>
                     <div className="flex gap-4">
                       <Button variant="outline" onClick={() => setStep(2)} className="flex-1">
-                        Back
+                        Retour
                       </Button>
                       <Button onClick={handleSubmitOrder} className="flex-1">
-                        Place Order
+                        Valider la commande
                       </Button>
                     </div>
                   </CardContent>
@@ -274,7 +274,7 @@ const Checkout = () => {
             <div>
               <Card className="sticky top-24">
                 <CardHeader>
-                  <CardTitle>Order Summary</CardTitle>
+                  <CardTitle>Récapitulatif de commande</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -286,12 +286,12 @@ const Checkout = () => {
                     ))}
                     <div className="pt-3 border-t space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Subtotal</span>
+                        <span className="text-muted-foreground">Sous-total</span>
                         <span>${getCartTotal()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Shipping</span>
-                        <span>FREE</span>
+                        <span className="text-muted-foreground">Livraison</span>
+                        <span>OFFERT</span>
                       </div>
                       <div className="pt-2 border-t">
                         <div className="flex justify-between font-semibold text-lg">

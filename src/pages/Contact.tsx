@@ -12,8 +12,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      title: "Message envoyé !",
+      description: "Merci de nous avoir contactés. Nous vous répondrons rapidement.",
     });
   };
 
@@ -24,9 +24,9 @@ const Contact = () => {
       <main className="flex-1">
         <div className="bg-muted/30 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Get in Touch</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Nous contacter</h1>
             <p className="text-lg text-muted-foreground">
-              We'd love to hear from you
+              Nous serions ravis d'échanger avec vous
             </p>
           </div>
         </div>
@@ -36,7 +36,7 @@ const Contact = () => {
             <Card>
               <CardContent className="p-6 text-center">
                 <Mail className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold mb-2">Email Us</h3>
+                <h3 className="font-semibold mb-2">Écrivez-nous</h3>
                 <p className="text-sm text-muted-foreground">hello@artisancrochet.com</p>
               </CardContent>
             </Card>
@@ -44,7 +44,7 @@ const Contact = () => {
             <Card>
               <CardContent className="p-6 text-center">
                 <Phone className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold mb-2">Call Us</h3>
+                <h3 className="font-semibold mb-2">Appelez-nous</h3>
                 <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
               </CardContent>
             </Card>
@@ -52,7 +52,7 @@ const Contact = () => {
             <Card>
               <CardContent className="p-6 text-center">
                 <MapPin className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold mb-2">Visit Us</h3>
+                <h3 className="font-semibold mb-2">Venez nous voir</h3>
                 <p className="text-sm text-muted-foreground">123 Artisan Lane<br />Brooklyn, NY 11201</p>
               </CardContent>
             </Card>
@@ -61,33 +61,33 @@ const Contact = () => {
           <div className="max-w-2xl mx-auto">
             <Card>
               <CardContent className="p-8">
-                <h2 className="text-2xl font-serif font-bold mb-6">Send Us a Message</h2>
+                <h2 className="text-2xl font-serif font-bold mb-6">Envoyez-nous un message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" placeholder="Your name" required />
+                      <Label htmlFor="name">Nom</Label>
+                      <Input id="name" placeholder="Votre nom" required />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" required />
+                      <Label htmlFor="email">E-mail</Label>
+                      <Input id="email" type="email" placeholder="vous@email.com" required />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="How can we help?" required />
+                    <Label htmlFor="subject">Sujet</Label>
+                    <Input id="subject" placeholder="Comment pouvons-nous vous aider ?" required />
                   </div>
                   <div>
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
-                      placeholder="Tell us more about your inquiry..."
+                      placeholder="Parlez-nous de votre demande..."
                       className="min-h-[150px]"
                       required
                     />
                   </div>
                   <Button type="submit" size="lg" className="w-full">
-                    Send Message
+                    Envoyer le message
                   </Button>
                 </form>
               </CardContent>

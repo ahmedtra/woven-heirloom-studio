@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -10,9 +10,24 @@ const Shop = () => {
   const [selectedMaterial, setSelectedMaterial] = useState<string>("all");
   const [selectedColor, setSelectedColor] = useState<string>("all");
 
+  const styles = useMemo(
+    () => Array.from(new Set(products.map((product) => product.category))),
+    []
+  );
+
+  const materials = useMemo(
+    () => Array.from(new Set(products.map((product) => product.material))),
+    []
+  );
+
+  const colors = useMemo(
+    () => Array.from(new Set(products.map((product) => product.color))),
+    []
+  );
+
   const filteredProducts = products.filter((product) => {
     if (selectedStyle !== "all" && product.category !== selectedStyle) return false;
-    if (selectedMaterial !== "all" && !product.material.includes(selectedMaterial)) return false;
+    if (selectedMaterial !== "all" && product.material !== selectedMaterial) return false;
     if (selectedColor !== "all" && product.color !== selectedColor) return false;
     return true;
   });
@@ -24,9 +39,9 @@ const Shop = () => {
       <main className="flex-1">
         <div className="bg-muted/30 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Shop Collection</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Collection de la boutique</h1>
             <p className="text-lg text-muted-foreground">
-              Browse our curated selection of handmade crochet bags
+              Parcourez notre sélection soignée de sacs au crochet faits main
             </p>
           </div>
         </div>
@@ -38,44 +53,49 @@ const Shop = () => {
               <label className="text-sm font-medium mb-2 block">Style</label>
               <Select value={selectedStyle} onValueChange={setSelectedStyle}>
                 <SelectTrigger>
-                  <SelectValue placeholder="All Styles" />
+                  <SelectValue placeholder="Tous les styles" />
                 </SelectTrigger>
                 <SelectContent className="bg-card z-50">
-                  <SelectItem value="all">All Styles</SelectItem>
-                  <SelectItem value="Tote">Tote</SelectItem>
-                  <SelectItem value="Clutch">Clutch</SelectItem>
-                  <SelectItem value="Crossbody">Crossbody</SelectItem>
+                  <SelectItem value="all">Tous les styles</SelectItem>
+                  {styles.map((style) => (
+                    <SelectItem key={style} value={style}>
+                      {style}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-2 block">Material</label>
+              <label className="text-sm font-medium mb-2 block">Matière</label>
               <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
                 <SelectTrigger>
-                  <SelectValue placeholder="All Materials" />
+                  <SelectValue placeholder="Toutes les matières" />
                 </SelectTrigger>
                 <SelectContent className="bg-card z-50">
-                  <SelectItem value="all">All Materials</SelectItem>
-                  <SelectItem value="Cotton">Cotton</SelectItem>
-                  <SelectItem value="Wool">Wool</SelectItem>
-                  <SelectItem value="Leather">Leather Accents</SelectItem>
+                  <SelectItem value="all">Toutes les matières</SelectItem>
+                  {materials.map((material) => (
+                    <SelectItem key={material} value={material}>
+                      {material}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-2 block">Color</label>
+              <label className="text-sm font-medium mb-2 block">Couleur</label>
               <Select value={selectedColor} onValueChange={setSelectedColor}>
                 <SelectTrigger>
-                  <SelectValue placeholder="All Colors" />
+                  <SelectValue placeholder="Toutes les couleurs" />
                 </SelectTrigger>
                 <SelectContent className="bg-card z-50">
-                  <SelectItem value="all">All Colors</SelectItem>
-                  <SelectItem value="Cream">Cream</SelectItem>
-                  <SelectItem value="Terracotta">Terracotta</SelectItem>
-                  <SelectItem value="Green">Green</SelectItem>
-                  <SelectItem value="Brown">Brown</SelectItem>
+                  <SelectItem value="all">Toutes les couleurs</SelectItem>
+                  {colors.map((color) => (
+                    <SelectItem key={color} value={color}>
+                      {color}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -91,7 +111,7 @@ const Shop = () => {
           {filteredProducts.length === 0 && (
             <div className="text-center py-12">
               <p className="text-lg text-muted-foreground">
-                No products match your filters. Try adjusting your selection.
+                Aucun produit ne correspond à vos filtres. Essayez d'ajuster votre sélection.
               </p>
             </div>
           )}
