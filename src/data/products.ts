@@ -18,7 +18,7 @@ export const products: Product[] = [
     price: 159,
     description:
       "Un cabas aux teintes sable tressé main dans un coton bio ultra doux. Sa base renforcée garde une belle tenue, idéale pour les journées bien remplies.",
-    images: ["product1.jpeg"],
+    images: ["products/product1.jpeg"],
     category: "Cabas",
     material: "Coton bio",
     color: "Sable",
@@ -31,7 +31,7 @@ export const products: Product[] = [
     price: 135,
     description:
       "Sac bandoulière compact en bleu nuit, doublé d'un coton et de finitions en cuir végétal. La bandoulière ajustable permet un porté confortable toute la journée.",
-    images: ["product2.jpeg"],
+    images: ["products/product2.jpeg"],
     category: "Bandoulière",
     material: "Coton et cuir végétal",
     color: "Bleu nuit",
@@ -44,7 +44,7 @@ export const products: Product[] = [
     price: 95,
     description:
       "Pochette délicate dans des tons pastel, ornée de fines perles crochetées. Parfaite pour ajouter une touche artisanale à vos tenues de soirée.",
-    images: ["product3.jpeg"],
+    images: ["products/product3.jpeg"],
     category: "Pochette",
     material: "Laine fine",
     color: "Rose poudré",
@@ -56,7 +56,7 @@ export const products: Product[] = [
     price: 149,
     description:
       "Sac seau ivoire avec cordon resserrant et fond rigide. Le coton mercerisé lui apporte une brillance subtile tout en restant doux au toucher.",
-    images: ["product4.jpeg"],
+    images: ["products/product4.jpeg"],
     category: "Sac seau",
     material: "Coton mercerisé",
     color: "Ivoire",
@@ -69,7 +69,7 @@ export const products: Product[] = [
     price: 165,
     description:
       "Grand cabas vert olive pensé pour le marché. Les anses renforcées et la maille ajourée respirante en font un compagnon pratique et élégant.",
-    images: ["product5.jpeg"],
+    images: ["products/product5.jpeg"],
     category: "Cabas",
     material: "Raphia tissé",
     color: "Vert olive",
@@ -82,7 +82,7 @@ export const products: Product[] = [
     price: 129,
     description:
       "Bandoulière souple dans une chaleureuse teinte terracotta. Tissée en coton recyclé, elle dispose d'une poche intérieure pour vos essentiels.",
-    images: ["product6.jpeg"],
+    images: ["products/product6.jpeg"],
     category: "Bandoulière",
     material: "Coton recyclé",
     color: "Terre cuite",
@@ -95,7 +95,7 @@ export const products: Product[] = [
     price: 115,
     description:
       "Petit sac caramel à porter à la main ou épaule grâce à sa chaîne amovible. Sa doublure veloutée protège vos petites affaires avec élégance.",
-    images: ["product7.jpeg"],
+    images: ["products/product7.jpeg"],
     category: "Pochette",
     material: "Coton et cuir souple",
     color: "Caramel",
@@ -107,7 +107,7 @@ export const products: Product[] = [
     price: 175,
     description:
       "Un sac à dos léger en lin brut, parfait pour vos escapades créatives. Les bretelles réglables et la poche avant zippée simplifient vos déplacements.",
-    images: ["product8.jpeg"],
+    images: ["products/product8.jpeg"],
     category: "Sac à dos",
     material: "Lin brut",
     color: "Naturel",
@@ -120,7 +120,7 @@ export const products: Product[] = [
     price: 169,
     description:
       "Grand cabas bleu ardoise inspiré des rivages du Nord. Sa laine bouclée, chaude et résistante, garde vos effets bien protégés.",
-    images: ["product9.jpeg"],
+    images: ["products/product9.jpeg"],
     category: "Cabas",
     material: "Laine bouclée",
     color: "Bleu ardoise",
@@ -133,7 +133,7 @@ export const products: Product[] = [
     price: 105,
     description:
       "Pochette de soirée argentée en fil métallisé, agrémentée d'une dragonne crochetée. Elle capte la lumière et se glisse facilement dans la main.",
-    images: ["product10.jpeg"],
+    images: ["products/product10.jpeg"],
     category: "Pochette",
     material: "Fil métallisé",
     color: "Argent",
@@ -145,7 +145,7 @@ export const products: Product[] = [
     price: 139,
     description:
       "Sac bandoulière prune aux finitions velours, doublé d'un coton peigné. L'intérieur modulable accueille aisément portefeuille et carnet.",
-    images: ["product11.jpeg"],
+    images: ["products/product11.jpeg"],
     category: "Bandoulière",
     material: "Coton peigné",
     color: "Prune",

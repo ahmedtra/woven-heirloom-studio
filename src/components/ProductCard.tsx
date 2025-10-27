@@ -13,7 +13,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Link to={`/product/${product.id}`}>
         <div className="aspect-[4/5] overflow-hidden bg-muted">
           <img
-            src={`/src/assets/${product.images[0]}`}
+            src={`/${product.images[0]}`}
             alt={product.name}
             className="h-full w-full object-cover transition-smooth group-hover:scale-105"
           />
