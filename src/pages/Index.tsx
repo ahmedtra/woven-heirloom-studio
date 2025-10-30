@@ -26,7 +26,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
           </div>
           
-          <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="relative mx-auto flex h-full w-full max-w-6xl items-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
                 Fait main,<br />Avec cœur
@@ -51,7 +51,7 @@ const Index = () => {
         </section>
 
         {/* Featured Products */}
-        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-serif font-bold mb-4">Collection à la une</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -77,7 +77,7 @@ const Index = () => {
 
         {/* About Section */}
         <section className="bg-muted/30 py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-4xl font-serif font-bold mb-6">L'art du fait main</h2>
