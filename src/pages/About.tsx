@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero-bags.jpg";
+import bagsImage from "@/assets/bags.png";
 
 const About = () => {
   return (
@@ -21,40 +21,38 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-muted-foreground mb-8">
-                Chaque sac que nous créons est plus qu'un simple accessoire — c'est un travail d'amour,
-                un témoignage du savoir-faire traditionnel et une pièce d'art à porter pensée pour traverser les générations.
+                Chaque sac que nous créons est plus qu'un simple accessoire — c'est un ouvrage né de notre passion,
+                un témoignage du savoir-faire traditionnel et une œuvre d'art à porter, pensée pour traverser les générations.
               </p>
 
               <div className="aspect-video rounded-lg overflow-hidden mb-12">
                 <img
-                  src={heroImage}
-                  alt="Artisan fabriquant des sacs"
+                  src={bagsImage}
+                  alt="Collection de sacs artisanaux"
                   className="w-full h-full object-cover"
                 />
               </div>
 
               <h2 className="text-3xl font-serif font-bold mb-4">L'art du crochet</h2>
               <p className="text-muted-foreground mb-6">
-                Notre aventure est née d'une simple passion pour le crochet — un art pluriséculaire qui
-                transforme un fil humble en motifs raffinés et magnifiques. Chaque sac commence avec des
-                matières soigneusement choisies : des fils de coton doux aux teintes chaleureuses, associés
-                à des finitions en cuir premium provenant de fournisseurs responsables.
+                Notre aventure est née d'une passion simple pour le crochet — Mme Asma pratique cet art depuis sa plus tendre enfance,
+                façonnant patiemment des sacs à la main. Plus qu'une simple passion, le crochet est devenu sa manière d'exprimer son amour
+                et son cœur pour ses proches. Aujourd'hui, elle souhaite transmettre cette flamme et cette expertise à travers des sacs uniques
+                qui reflètent sa créativité et sa délicatesse.
               </p>
 
-              <h2 className="text-3xl font-serif font-bold mb-4">Tradition maroquinière</h2>
+              <h2 className="text-3xl font-serif font-bold mb-4">Unicité</h2>
               <p className="text-muted-foreground mb-6">
-                Nous associons les techniques traditionnelles du crochet à l'art de la maroquinerie — la
-                tradition française du travail fin du cuir. Nos finitions en cuir sont découpées à la main,
-                polies sur les bords et soigneusement fixées pour sublimer la douceur du crochet. Cette alliance
-                textile donne naissance à des sacs à la fois luxueux et fonctionnels.
+                Ce travail représente l'imagination et la créativité de Mme Asma, qui a pratiqué le crochet ainsi que différentes
+                autres techniques textiles depuis l'enfance. Chaque pièce est le fruit d'années de pratique et de réinterprétation de
+                la tradition du crochet à la main.
               </p>
 
-              <h2 className="text-3xl font-serif font-bold mb-4">Pensé pour durer</h2>
+              <h2 className="text-3xl font-serif font-bold mb-4">Pensés pour durer</h2>
               <p className="text-muted-foreground mb-6">
                 Chaque sac nécessite plusieurs jours de travail. Nous ne précipitons jamais le processus,
-                car nous croyons aux pièces héritage plutôt qu'à la mode éphémère. Du premier point à la dernière
-                touche de cuir, chaque étape est réalisée à la main avec une attention méticuleuse aux détails.
-                Le résultat : un sac qui se magnifie avec le temps et développe une patine unique, reflet de votre histoire commune.
+                car nous croyons aux pièces d'héritage plutôt qu'à la mode éphémère. Nous misons sur la qualité de la matière première
+                ainsi que sur l'authenticité de chaque article, et c'est pour cela que chaque création unique célèbre votre singularité.
               </p>
 
               <div className="bg-muted/30 rounded-lg p-8 my-12">

@@ -4,7 +4,8 @@ import ProductCard from "@/components/ProductCard";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { products } from "@/data/products";
-import heroImage from "@/assets/hero-bags.jpg";
+import bagsImage from "@/assets/bags.png";
+import crochetCraftGif from "@/assets/crochet making.gif";
 
 const Index = () => {
   const featuredProducts = products.slice(0, 4);
@@ -18,8 +19,8 @@ const Index = () => {
         <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src={heroImage}
-              alt="Sacs au crochet faits main"
+              src={bagsImage}
+              alt="Collection de sacs artisanaux"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
@@ -95,11 +96,11 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              <div className="relative h-[400px] rounded-lg overflow-hidden">
+              <div className="flex justify-center">
                 <img
-                  src={heroImage}
-                  alt="Détail du savoir-faire"
-                  className="w-full h-full object-cover"
+                  src={crochetCraftGif}
+                  alt="Processus de création au crochet"
+                  className="rounded-lg max-h-[360px] w-full max-w-3xl object-contain bg-muted p-2"
                 />
               </div>
             </div>
