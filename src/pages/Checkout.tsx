@@ -23,13 +23,6 @@ const Checkout = () => {
     country: "",
   });
 
-  const [paymentInfo, setPaymentInfo] = useState({
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    cardName: "",
-  });
-
   if (items.length === 0) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -48,7 +41,7 @@ const Checkout = () => {
   const handleSubmitOrder = () => {
     toast({
       title: "Commande passée avec succès !",
-      description: "Merci pour votre achat. Vous recevrez bientôt un e-mail de confirmation.",
+      description: "Merci pour votre commande. Nous vous contacterons pour organiser la livraison et le paiement à la remise.",
     });
     clearCart();
     navigate("/");
@@ -61,7 +54,7 @@ const Checkout = () => {
       <main className="flex-1">
         <div className="bg-muted/30 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold">Paiement</h1>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold">Finaliser la commande</h1>
           </div>
         </div>
 
@@ -69,25 +62,18 @@ const Checkout = () => {
           {/* Progress Steps */}
           <div className="flex justify-center mb-12">
             <div className="flex items-center space-x-4">
-              <div className={`flex items-center ${step >= 1 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+              <div className={`flex items-center ${step >= 1 ? "text-primary" : "text-muted-foreground"}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
                   1
                 </div>
                 <span className="ml-2 font-medium">Livraison</span>
               </div>
               <div className="w-12 h-0.5 bg-border" />
-              <div className={`flex items-center ${step >= 2 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+              <div className={`flex items-center ${step >= 2 ? "text-primary" : "text-muted-foreground"}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
                   2
                 </div>
-                <span className="ml-2 font-medium">Paiement</span>
-              </div>
-              <div className="w-12 h-0.5 bg-border" />
-              <div className={`flex items-center ${step >= 3 ? 'text-primary' : 'text-muted-foreground'}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                  3
-                </div>
-                <span className="ml-2 font-medium">Validation</span>
+                <span className="ml-2 font-medium">Confirmation</span>
               </div>
             </div>
           </div>
@@ -149,9 +135,9 @@ const Checkout = () => {
                           onChange={(e) => setShippingInfo({ ...shippingInfo, postalCode: e.target.value })}
                           placeholder="75001"
                         />
-                      </div>
-                      <div>
-                        <Label htmlFor="country">Pays</Label>
+                    </div>
+                    <div>
+                      <Label htmlFor="country">Pays</Label>
                         <Input
                           id="country"
                           value={shippingInfo.country}
@@ -161,71 +147,14 @@ const Checkout = () => {
                       </div>
                     </div>
                     <Button onClick={() => setStep(2)} className="w-full">
-                      Continuer vers le paiement
+                      Continuer vers la confirmation
                     </Button>
                   </CardContent>
                 </Card>
               )}
 
-              {/* Step 2: Payment */}
+              {/* Step 2: Review */}
               {step === 2 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Informations de paiement</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <Label htmlFor="cardName">Nom sur la carte</Label>
-                      <Input
-                        id="cardName"
-                        value={paymentInfo.cardName}
-                        onChange={(e) => setPaymentInfo({ ...paymentInfo, cardName: e.target.value })}
-                        placeholder="Jean Dupont"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="cardNumber">Numéro de carte</Label>
-                      <Input
-                        id="cardNumber"
-                        value={paymentInfo.cardNumber}
-                        onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
-                        placeholder="1234 5678 9012 3456"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="expiryDate">Date d'expiration</Label>
-                        <Input
-                          id="expiryDate"
-                          value={paymentInfo.expiryDate}
-                          onChange={(e) => setPaymentInfo({ ...paymentInfo, expiryDate: e.target.value })}
-                          placeholder="MM/AA"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="cvv">CVV</Label>
-                        <Input
-                          id="cvv"
-                          value={paymentInfo.cvv}
-                          onChange={(e) => setPaymentInfo({ ...paymentInfo, cvv: e.target.value })}
-                          placeholder="123"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex gap-4">
-                      <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-                        Retour
-                      </Button>
-                      <Button onClick={() => setStep(3)} className="flex-1">
-                        Vérifier la commande
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* Step 3: Review */}
-              {step === 3 && (
                 <Card>
                   <CardHeader>
                     <CardTitle>Vérifiez votre commande</CardTitle>
@@ -241,9 +170,9 @@ const Checkout = () => {
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-2">Mode de paiement</h3>
+                      <h3 className="font-semibold mb-2">Paiement</h3>
                       <p className="text-sm text-muted-foreground">
-                        Carte se terminant par {paymentInfo.cardNumber.slice(-4)}
+                        Paiement à la livraison. Nous vous contacterons pour convenir des modalités lors de la remise du produit.
                       </p>
                     </div>
                     <div>
@@ -258,11 +187,11 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="flex gap-4">
-                      <Button variant="outline" onClick={() => setStep(2)} className="flex-1">
+                      <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
                         Retour
                       </Button>
                       <Button onClick={handleSubmitOrder} className="flex-1">
-                        Valider la commande
+                        Confirmer la commande
                       </Button>
                     </div>
                   </CardContent>

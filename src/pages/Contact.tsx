@@ -37,7 +37,7 @@ const Contact = () => {
               <CardContent className="p-6 text-center">
                 <Mail className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Écrivez-nous</h3>
-                <p className="text-sm text-muted-foreground">hello@artisancrochet.com</p>
+                <p className="text-sm text-muted-foreground">clients@asmouta.tn</p>
               </CardContent>
             </Card>
 
@@ -45,7 +45,7 @@ const Contact = () => {
               <CardContent className="p-6 text-center">
                 <Phone className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Appelez-nous</h3>
-                <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                <p className="text-sm text-muted-foreground">+216 93226072</p>
               </CardContent>
             </Card>
 
@@ -53,7 +53,7 @@ const Contact = () => {
               <CardContent className="p-6 text-center">
                 <MapPin className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Venez nous voir</h3>
-                <p className="text-sm text-muted-foreground">123 Artisan Lane<br />Brooklyn, NY 11201</p>
+                <p className="text-sm text-muted-foreground">Soukra 2036<br />Tunis</p>
               </CardContent>
             </Card>
           </div>

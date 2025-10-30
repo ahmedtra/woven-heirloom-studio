@@ -83,11 +83,11 @@ const Index = () => {
                 <h2 className="text-4xl font-serif font-bold mb-6">L'art du fait main</h2>
                 <p className="text-lg text-muted-foreground mb-4">
                   Chaque sac de notre collection est un travail d'amour, issu du savoir-faire ancestral du crochet.
-                  Nous associons des fils doux et de haute qualité à des finitions en cuir premium pour créer des
+                  Nous associons des fils doux et de haute qualité à des motifs de crochet uniques pour créer des
                   pièces à la fois belles et fonctionnelles.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Notre engagement envers les techniques traditionnelles de maroquinerie garantit que chaque sac
+                  Notre engagement envers les techniques traditionnelles de crochet garantit que chaque sac
                   n'est pas qu'un simple accessoire, mais une pièce patrimoniale conçue pour durer des générations.
                 </p>
                 <Link to="/about">

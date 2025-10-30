@@ -129,7 +129,7 @@ const Cart = () => {
 
                   <Link to="/checkout">
                     <Button size="lg" className="w-full mb-3">
-                      Passer au paiement
+                      Finaliser la commande
                     </Button>
                   </Link>
                   <Link to="/shop">
