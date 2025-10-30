@@ -34,14 +34,14 @@ const Index = () => {
               <p className="text-xl md:text-2xl text-muted-foreground mb-8">
                 Découvrez votre prochain sac à transmettre
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
                 <Link to="/shop">
-                  <Button size="lg" className="text-lg px-8">
+                  <Button size="lg" className="text-base md:text-lg px-6 md:px-8 w-full sm:w-auto">
                     Découvrir la collection
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button size="lg" variant="outline" className="text-lg px-8">
+                  <Button size="lg" variant="outline" className="text-base md:text-lg px-6 md:px-8 w-full sm:w-auto">
                     Notre histoire
                   </Button>
                 </Link>
