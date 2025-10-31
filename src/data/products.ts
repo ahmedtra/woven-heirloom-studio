@@ -62,7 +62,7 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    name: "Pochet",
+    name: "Pochet Emma",
     price: 129,
     description:
       "Bandoulière souple dans une chaleureuse teinte terracotta. Tissée en coton recyclé, elle dispose d'une poche intérieure pour vos essentiels.",
