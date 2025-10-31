@@ -55,8 +55,7 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-serif font-bold mb-4">Collection à la une</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Chaque sac est confectionné avec un soin méticuleux, associant des techniques traditionnelles de crochet
-              à des finitions en cuir de qualité pour un style intemporel.
+              Chaque sac est confectionné avec un soin méticuleux, associant des techniques traditionnelles de crochet à des finitions modernes de qualité pour un style intemporel.
             </p>
           </div>
 
