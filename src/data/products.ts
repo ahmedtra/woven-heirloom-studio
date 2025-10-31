@@ -26,7 +26,7 @@ export const products: Product[] = [
   },
   {
     id: "3",
-        name: "Mini Cabas Elia",
+        name: "Mini Cabas Mimi",
     price: 145,
     description:
       "Mini Cabas couleur taupe tissé main avec manchettes en bois naturel et attache boheme",
@@ -38,7 +38,7 @@ export const products: Product[] = [
   },
   {
     id: "4",
-    name: "Chapeau Alij",
+    name: "Chapeau Imen",
     price: 85,
     description:
       "Chapeau tissé main avec motif fleur",
@@ -50,7 +50,7 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    name: "Cabas Fes",
+    name: "Cabas Alia",
     price: 180,
     description:
       "Grand cabas taupe en Rafia naturelle pensé pour le marché.",
@@ -62,7 +62,7 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    name: "Pochet Emma",
+    name: "Pochette Emma",
     price: 129,
     description:
       "Bandoulière souple dans une chaleureuse teinte terracotta. Tissée en coton recyclé, elle dispose d'une poche intérieure pour vos essentiels.",
@@ -122,7 +122,7 @@ export const products: Product[] = [
   },
   {
     id: "11",
-    name: "Sac à main Yasmina",
+    name: "Sac à main Yesmine",
     price: 139,
     description:
       "Sac a main tressé main, manchettes métalliques",
