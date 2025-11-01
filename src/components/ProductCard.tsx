@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Product } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -26,7 +27,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </h3>
         </Link>
         <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
-        <p className="font-semibold text-primary">${product.price}</p>
+        <p className="font-semibold text-primary">{formatCurrency(product.price)}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Link to={`/product/${product.id}`} className="w-full">

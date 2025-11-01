@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/utils";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, getCartTotal } = useCart();
@@ -95,7 +96,7 @@ const Cart = () => {
                               <Plus className="h-3 w-3" />
                             </Button>
                           </div>
-                          <p className="font-semibold">${item.price * item.quantity}</p>
+                          <p className="font-semibold">{formatCurrency(item.price * item.quantity)}</p>
                         </div>
                       </div>
                     </div>
@@ -113,7 +114,7 @@ const Cart = () => {
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Sous-total</span>
-                      <span>${getCartTotal()}</span>
+                      <span>{formatCurrency(getCartTotal())}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Livraison</span>
@@ -122,7 +123,7 @@ const Cart = () => {
                     <div className="pt-3 border-t">
                       <div className="flex justify-between font-semibold text-lg">
                         <span>Total</span>
-                        <span className="text-primary">${getCartTotal()}</span>
+                        <span className="text-primary">{formatCurrency(getCartTotal())}</span>
                       </div>
                     </div>
                   </div>

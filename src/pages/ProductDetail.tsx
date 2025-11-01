@@ -7,6 +7,7 @@ import { products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { formatCurrency } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -60,7 +61,7 @@ const ProductDetail = () => {
             {/* Product Info */}
             <div>
               <h1 className="text-4xl font-serif font-bold mb-4">{product.name}</h1>
-              <p className="text-3xl font-semibold text-primary mb-6">${product.price}</p>
+              <p className="text-3xl font-semibold text-primary mb-6">{formatCurrency(product.price)}</p>
               
               <div className="prose prose-lg mb-8">
                 <p className="text-muted-foreground">{product.description}</p>

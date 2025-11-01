@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
+import { formatCurrency } from "@/lib/utils";
 
 const Checkout = () => {
   const { items, getCartTotal, clearCart } = useCart();
@@ -181,7 +182,7 @@ const Checkout = () => {
                         {items.map((item) => (
                           <div key={item.id} className="flex justify-between text-sm">
                             <span>{item.name} × {item.quantity}</span>
-                            <span>${item.price * item.quantity}</span>
+                            <span>{formatCurrency(item.price * item.quantity)}</span>
                           </div>
                         ))}
                       </div>
@@ -210,13 +211,13 @@ const Checkout = () => {
                     {items.map((item) => (
                       <div key={item.id} className="flex justify-between text-sm">
                         <span>{item.name} × {item.quantity}</span>
-                        <span>${item.price * item.quantity}</span>
+                        <span>{formatCurrency(item.price * item.quantity)}</span>
                       </div>
                     ))}
                     <div className="pt-3 border-t space-y-2">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Sous-total</span>
-                        <span>${getCartTotal()}</span>
+                        <span>{formatCurrency(getCartTotal())}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Livraison</span>
@@ -225,7 +226,7 @@ const Checkout = () => {
                       <div className="pt-2 border-t">
                         <div className="flex justify-between font-semibold text-lg">
                           <span>Total</span>
-                          <span className="text-primary">${getCartTotal()}</span>
+                          <span className="text-primary">{formatCurrency(getCartTotal())}</span>
                         </div>
                       </div>
                     </div>
