@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-serif text-lg font-semibold mb-4">Artisan Crochet</h3>
+            <h3 className="font-serif text-lg font-semibold mb-4">Asmouta</h3>
             <p className="text-sm text-muted-foreground">
               Sacs à main au crochet confectionnés avec amour et savoir-faire. Chaque pièce est un héritage unique.
             </p>
@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Artisan Crochet. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Asmouta. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

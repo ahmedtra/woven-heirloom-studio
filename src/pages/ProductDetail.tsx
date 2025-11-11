@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Plus, Minus } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -15,6 +15,7 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!product) {
     return (
@@ -33,8 +34,20 @@ const ProductDetail = () => {
     );
   }
 
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [product?.id]);
+
+  const hasMultipleImages = product.images.length > 1;
+  const currentImage = product.images[currentImageIndex] ?? product.images[0];
+
   const handleAddToCart = () => {
     addToCart(product, quantity, selectedSize);
+  };
+
+  const handleImageAdvance = () => {
+    if (!hasMultipleImages) return;
+    setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
   };
 
   return (
@@ -50,12 +63,22 @@ const ProductDetail = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Product Image */}
-            <div className="aspect-square overflow-hidden rounded-lg bg-muted">
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
               <img
-                src={`/${product.images[0]}`}
+                src={`/${currentImage}`}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
+              {hasMultipleImages && (
+                <button
+                  type="button"
+                  onClick={handleImageAdvance}
+                  className="absolute bottom-4 right-4 rounded-full bg-black/65 px-4 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur transition-smooth hover:bg-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label="Voir l'image suivante"
+                >
+                  Image {currentImageIndex + 1}/{product.images.length}
+                </button>
+              )}
             </div>
 
             {/* Product Info */}
