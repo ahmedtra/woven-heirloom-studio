@@ -67,10 +67,9 @@ export const products: Product[] = [
     description:
       "Bandoulière souple dans une chaleureuse teinte terracotta. Tissée en coton recyclé, elle dispose d'une poche intérieure pour vos essentiels.",
     images: [
-      "products/6/373eb803-19f9-4bb4-be14-7e26947078b0.jpeg",
-      "products/6/6ba7ba02-120b-4e3a-a492-c82d213673e4.jpeg",
-      "products/6/72ac9850-545c-4b82-a50a-b102aff2d39a.jpeg",
-      "products/6/d5486446-d564-4ca4-8cda-cf9f757e5c1e.jpeg",
+      "products/6/1.jpeg",
+      "products/6/2.jpeg",
+      "products/6/3.jpeg",
     ],
     category: "Bandoulière",
     material: "Coton recyclé",
@@ -131,7 +130,7 @@ export const products: Product[] = [
     price: 139,
     description:
       "Sac a main tressé main, manchettes métalliques",
-    images: ["products/11/1.jpeg", "products/11/2.jpeg", "products/11/62c2b0c7-bd78-4aee-b08d-721432bde6c7.jpeg"],
+    images: ["products/11/1.jpeg", "products/11/2.jpeg", "products/11/3.jpeg"],
     category: "Sac á main",
     material: "Coton",
     color: "Noir",
