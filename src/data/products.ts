@@ -50,7 +50,7 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    name: "Cabas Alia",
+    name: "Cabas Rakia",
     price: 180,
     description:
       "Grand cabas taupe en Rafia naturelle pensé pour le marché.",
