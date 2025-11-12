@@ -40,10 +40,36 @@ const Checkout = () => {
   }
 
   const handleSubmitOrder = () => {
+    const customerName = shippingInfo.fullName || "Client";
+    const subject = `Nouvelle commande - ${customerName}`;
+    const lines = [
+      "Nouvelle commande reçue via le site.",
+      "",
+      "Informations client :",
+      `Nom : ${shippingInfo.fullName || "Non communiqué"}`,
+      `Email : ${shippingInfo.email || "Non communiqué"}`,
+      `Adresse : ${shippingInfo.address || "Non communiqué"}`,
+      `Ville : ${shippingInfo.city || "Non communiqué"}`,
+      `Code postal : ${shippingInfo.postalCode || "Non communiqué"}`,
+      `Pays : ${shippingInfo.country || "Non communiqué"}`,
+      "",
+      "Articles :",
+      ...items.map(
+        (item) => `- ${item.name} × ${item.quantity} = ${formatCurrency(item.price * item.quantity)}`
+      ),
+      "",
+      `Total : ${formatCurrency(getCartTotal())}`,
+    ];
+
+    window.location.href = `mailto:client@asmouta.tn?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(lines.join("\n"))}`;
+
     toast({
-      title: "Commande passée avec succès !",
-      description: "Merci pour votre commande. Nous vous contacterons pour organiser la livraison et le paiement à la remise.",
+      title: "Commande transmise !",
+      description: "Merci pour votre commande. Votre récapitulatif va s'ouvrir dans votre application e-mail.",
     });
+
     clearCart();
     navigate("/");
   };

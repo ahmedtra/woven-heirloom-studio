@@ -9,12 +9,29 @@ import { toast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get("name") ?? "").toString().trim();
+    const email = (formData.get("email") ?? "").toString().trim();
+    const subject = (formData.get("subject") ?? "").toString().trim() || `Message de ${name || "client"}`;
+    const message = (formData.get("message") ?? "").toString().trim();
+    const body = [
+      `Nom: ${name}`,
+      `Email: ${email}`,
+      "",
+      message,
+    ].join("\n");
+
+    window.location.href = `mailto:client@asmouta.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     toast({
       title: "Message envoyé !",
-      description: "Merci de nous avoir contactés. Nous vous répondrons rapidement.",
+      description: "Merci de nous avoir contactés. Votre application e-mail va s'ouvrir.",
     });
+
+    form.reset();
   };
 
   return (
@@ -37,7 +54,7 @@ const Contact = () => {
               <CardContent className="p-6 text-center">
                 <Mail className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Écrivez-nous</h3>
-                <p className="text-sm text-muted-foreground">clients@asmouta.tn</p>
+                <p className="text-sm text-muted-foreground">client@asmouta.com</p>
               </CardContent>
             </Card>
 
@@ -66,21 +83,22 @@ const Contact = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Nom</Label>
-                      <Input id="name" placeholder="Votre nom" required />
+                      <Input id="name" name="name" placeholder="Votre nom" required />
                     </div>
                     <div>
                       <Label htmlFor="email">E-mail</Label>
-                      <Input id="email" type="email" placeholder="vous@email.com" required />
+                      <Input id="email" name="email" type="email" placeholder="vous@email.com" required />
                     </div>
                   </div>
                   <div>
                     <Label htmlFor="subject">Sujet</Label>
-                    <Input id="subject" placeholder="Comment pouvons-nous vous aider ?" required />
+                    <Input id="subject" name="subject" placeholder="Comment pouvons-nous vous aider ?" required />
                   </div>
                   <div>
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Parlez-nous de votre demande..."
                       className="min-h-[150px]"
                       required
