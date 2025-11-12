@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,9 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { emailConfig, sendEmail } from "@/lib/email";
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -17,21 +21,36 @@ const Contact = () => {
     const email = (formData.get("email") ?? "").toString().trim();
     const subject = (formData.get("subject") ?? "").toString().trim() || `Message de ${name || "client"}`;
     const message = (formData.get("message") ?? "").toString().trim();
-    const body = [
-      `Nom: ${name}`,
-      `Email: ${email}`,
-      "",
-      message,
-    ].join("\n");
+    const timestamp = new Date().toLocaleString("fr-FR", { hour12: false });
 
-    window.location.href = `mailto:client@asmouta.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    toast({
-      title: "Message envoyé !",
-      description: "Merci de nous avoir contactés. Votre application e-mail va s'ouvrir.",
-    });
-
-    form.reset();
+    try {
+      setIsSubmitting(true);
+      await sendEmail(emailConfig.contactTemplateId, {
+        name,
+        email,
+        subject,
+        time: timestamp,
+        message,
+        to_email: emailConfig.recipientEmail,
+        from_name: name || "Client",
+        from_email: email,
+        reply_to: email,
+      });
+      toast({
+        title: "Message envoyé !",
+        description: "Merci de nous avoir contactés. Nous vous répondrons rapidement.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Une erreur est survenue",
+        description: "Impossible d'envoyer votre message pour le moment. Veuillez réessayer.",
+        variant: "destructive",
+      });
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -104,8 +123,8 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" size="lg" className="w-full">
-                    Envoyer le message
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Envoi..." : "Envoyer le message"}
                   </Button>
                 </form>
               </CardContent>

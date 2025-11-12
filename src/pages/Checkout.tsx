@@ -9,11 +9,13 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
+import { emailConfig, sendEmail } from "@/lib/email";
 
 const Checkout = () => {
   const { items, getCartTotal, clearCart } = useCart();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   
   const [shippingInfo, setShippingInfo] = useState({
     fullName: "",
@@ -39,39 +41,64 @@ const Checkout = () => {
     );
   }
 
-  const handleSubmitOrder = () => {
-    const customerName = shippingInfo.fullName || "Client";
-    const subject = `Nouvelle commande - ${customerName}`;
-    const lines = [
-      "Nouvelle commande reçue via le site.",
-      "",
-      "Informations client :",
-      `Nom : ${shippingInfo.fullName || "Non communiqué"}`,
-      `Email : ${shippingInfo.email || "Non communiqué"}`,
-      `Adresse : ${shippingInfo.address || "Non communiqué"}`,
-      `Ville : ${shippingInfo.city || "Non communiqué"}`,
-      `Code postal : ${shippingInfo.postalCode || "Non communiqué"}`,
-      `Pays : ${shippingInfo.country || "Non communiqué"}`,
-      "",
-      "Articles :",
-      ...items.map(
-        (item) => `- ${item.name} × ${item.quantity} = ${formatCurrency(item.price * item.quantity)}`
-      ),
-      "",
-      `Total : ${formatCurrency(getCartTotal())}`,
-    ];
+  const handleSubmitOrder = async () => {
+    const orderId = `CMD-${Date.now()}`;
+    const shippingCost = 0;
+    const taxCost = 0;
+    const orderSubtotal = getCartTotal();
+    const orderTotal = orderSubtotal + shippingCost + taxCost;
 
-    window.location.href = `mailto:client@asmouta.tn?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
+    const addressParts = [
+      shippingInfo.address?.trim(),
+      [shippingInfo.postalCode, shippingInfo.city].filter(Boolean).join(" ").trim(),
+      shippingInfo.country?.trim(),
+    ].filter((part) => part && part.length > 0);
 
-    toast({
-      title: "Commande transmise !",
-      description: "Merci pour votre commande. Votre récapitulatif va s'ouvrir dans votre application e-mail.",
-    });
+    const orderLines = items.map((item) => `• ${item.name} × ${item.quantity} = ${formatCurrency(item.price * item.quantity)}`).join("\n");
 
-    clearCart();
-    navigate("/");
+    try {
+      setIsSubmittingOrder(true);
+      await sendEmail(emailConfig.orderTemplateId, {
+        order_id: orderId,
+        name: shippingInfo.fullName || "Client",
+        email: shippingInfo.email || "Non communiqué",
+        address: addressParts.join(", "),
+        orders: items.map((item) => ({
+          name: item.name,
+          units: item.quantity,
+          price: (item.price * item.quantity).toFixed(2),
+        })),
+        order_lines: orderLines,
+        cost: {
+          shipping: shippingCost.toFixed(2),
+          tax: taxCost.toFixed(2),
+          total: orderTotal.toFixed(2),
+        },
+        cost_shipping: shippingCost.toFixed(2),
+        cost_tax: taxCost.toFixed(2),
+        cost_total: orderTotal.toFixed(2),
+        to_email: emailConfig.recipientEmail,
+        reply_to: shippingInfo.email || emailConfig.recipientEmail,
+        customer_email: shippingInfo.email || "Non communiqué",
+      });
+
+      toast({
+        title: "Commande transmise !",
+        description: "Merci pour votre commande. Nous vous contacterons rapidement.",
+      });
+
+      clearCart();
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Impossible d'envoyer la commande",
+        description: "Veuillez vérifier votre connexion et réessayer.",
+        variant: "destructive",
+      });
+      console.error(error);
+    } finally {
+      setIsSubmittingOrder(false);
+    }
   };
 
   return (
@@ -217,8 +244,8 @@ const Checkout = () => {
                       <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
                         Retour
                       </Button>
-                      <Button onClick={handleSubmitOrder} className="flex-1">
-                        Confirmer la commande
+                      <Button onClick={handleSubmitOrder} className="flex-1" disabled={isSubmittingOrder}>
+                        {isSubmittingOrder ? "Envoi..." : "Confirmer la commande"}
                       </Button>
                     </div>
                   </CardContent>
