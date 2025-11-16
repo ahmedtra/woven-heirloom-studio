@@ -4,7 +4,7 @@ export const emailConfig = {
   serviceId: "service_ffpxj2e",
   publicKey: "PMGMpkgghZYOOF15M",
   contactTemplateId: "template_05rcdxe",
-  orderTemplateId: "template_owg0pb8",
+  orderTemplateId: "template_0rvknux",
   recipientEmail: "client@asmouta.com",
 };
 

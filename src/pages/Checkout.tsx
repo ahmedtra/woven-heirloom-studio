@@ -20,6 +20,7 @@ const Checkout = () => {
   const [shippingInfo, setShippingInfo] = useState({
     fullName: "",
     email: "",
+    phone: "",
     address: "",
     city: "",
     postalCode: "",
@@ -54,32 +55,64 @@ const Checkout = () => {
       shippingInfo.country?.trim(),
     ].filter((part) => part && part.length > 0);
 
-    const orderLines = items.map((item) => `• ${item.name} × ${item.quantity} = ${formatCurrency(item.price * item.quantity)}`).join("\n");
+    const customerName = shippingInfo.fullName.trim() || "Client";
+    const customerEmail = shippingInfo.email.trim();
+    const customerPhone = shippingInfo.phone.trim();
+    const replyEmail = customerEmail || emailConfig.recipientEmail;
+    const shippingAddress = addressParts.length > 0 ? addressParts.join(", ") : "Adresse non fournie";
+
+    const itemsHtml = `
+      <table style="border-collapse: collapse; width: 100%; margin: 16px 0;">
+        ${items
+          .map(
+            (item) => `
+              <tr>
+                <td style="padding: 8px 0; text-align: left;">
+                  <div style="font-weight: 600;">${item.name}</div>
+                  <div style="font-size: 12px; color: #666;">Quantité : ${item.quantity}</div>
+                </td>
+                <td style="padding: 8px 0; text-align: right; white-space: nowrap;">
+                  ${formatCurrency(item.price * item.quantity)}
+                </td>
+              </tr>
+            `,
+          )
+          .join("")}
+      </table>
+    `.trim();
+
+    const costSummary = {
+      shipping: shippingCost.toFixed(2),
+      tax: taxCost.toFixed(2),
+      total: orderTotal.toFixed(2),
+    };
+
+    const orderTimestamp = new Date().toLocaleString("fr-FR", { hour12: false });
 
     try {
       setIsSubmittingOrder(true);
       await sendEmail(emailConfig.orderTemplateId, {
         order_id: orderId,
-        name: shippingInfo.fullName || "Client",
-        email: shippingInfo.email || "Non communiqué",
-        address: addressParts.join(", "),
-        orders: items.map((item) => ({
-          name: item.name,
-          units: item.quantity,
-          price: (item.price * item.quantity).toFixed(2),
-        })),
-        order_lines: orderLines,
-        cost: {
-          shipping: shippingCost.toFixed(2),
-          tax: taxCost.toFixed(2),
-          total: orderTotal.toFixed(2),
-        },
-        cost_shipping: shippingCost.toFixed(2),
-        cost_tax: taxCost.toFixed(2),
-        cost_total: orderTotal.toFixed(2),
+        subject: `Nouvelle commande ${orderId}`,
+        name: customerName,
+        customer_name: customerName,
+        email: customerEmail || "Non communiqué",
+        customer_email: customerEmail || "Non communiqué",
+        phone: customerPhone || "Non communiqué",
+        address: shippingAddress,
+        shipping_address: shippingAddress,
+        items_html: itemsHtml,
+        cost: costSummary,
+        order_subtotal: orderSubtotal.toFixed(2),
+        cost_shipping: costSummary.shipping,
+        cost_tax: costSummary.tax,
+        cost_total: costSummary.total,
+        order_total_formatted: formatCurrency(orderTotal),
+        order_timestamp: orderTimestamp,
         to_email: emailConfig.recipientEmail,
-        reply_to: shippingInfo.email || emailConfig.recipientEmail,
-        customer_email: shippingInfo.email || "Non communiqué",
+        from_name: customerName,
+        from_email: replyEmail,
+        reply_to: replyEmail,
       });
 
       toast({
@@ -161,6 +194,16 @@ const Checkout = () => {
                           placeholder="jean@example.com"
                         />
                       </div>
+                      <div>
+                        <Label htmlFor="phone">Téléphone</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={shippingInfo.phone}
+                          onChange={(e) => setShippingInfo({ ...shippingInfo, phone: e.target.value })}
+                          placeholder="+216 00 000 000"
+                        />
+                      </div>
                     </div>
                     <div>
                       <Label htmlFor="address">Adresse</Label>
@@ -221,6 +264,9 @@ const Checkout = () => {
                         {shippingInfo.address}<br />
                         {shippingInfo.city}, {shippingInfo.postalCode}<br />
                         {shippingInfo.country}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Téléphone : {shippingInfo.phone || "Non communiqué"}
                       </p>
                     </div>
                     <div>
