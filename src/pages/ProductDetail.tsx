@@ -8,6 +8,12 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { formatCurrency } from "@/lib/utils";
+import {
+  getDiscountedPrice,
+  getSalePercentLabel,
+  isSaleActive,
+  SALE_EVENT_NAME,
+} from "@/lib/pricing";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -49,6 +55,9 @@ const ProductDetail = () => {
     if (!hasMultipleImages) return;
     setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
   };
+  const salePrice = getDiscountedPrice(product.price);
+  const saleActive = isSaleActive() && salePrice !== product.price;
+  const salePercentLabel = getSalePercentLabel();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -84,7 +93,23 @@ const ProductDetail = () => {
             {/* Product Info */}
             <div>
               <h1 className="text-4xl font-serif font-bold mb-4">{product.name}</h1>
-              <p className="text-3xl font-semibold text-primary mb-6">{formatCurrency(product.price)}</p>
+              <div className="mb-6 flex flex-col gap-2">
+                <div className="flex flex-wrap items-baseline gap-3">
+                  <p className="text-3xl font-semibold text-primary">
+                    {formatCurrency(salePrice)}
+                  </p>
+                  {saleActive && (
+                    <span className="text-xl text-muted-foreground line-through">
+                      {formatCurrency(product.price)}
+                    </span>
+                  )}
+                </div>
+                {saleActive && (
+                  <p className="text-sm text-muted-foreground">
+                    {SALE_EVENT_NAME} : {salePercentLabel} de réduction appliqués automatiquement.
+                  </p>
+                )}
+              </div>
               
               <div className="prose prose-lg mb-8">
                 <p className="text-muted-foreground">{product.description}</p>

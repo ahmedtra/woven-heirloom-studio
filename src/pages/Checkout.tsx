@@ -10,9 +10,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
 import { emailConfig, sendEmail } from "@/lib/email";
+import {
+  getDiscountedPrice,
+  getSalePercentLabel,
+  isSaleActive,
+  SALE_EVENT_NAME,
+} from "@/lib/pricing";
 
 const Checkout = () => {
   const { items, getCartTotal, clearCart } = useCart();
+  const salePercentLabel = getSalePercentLabel();
+  const saleActive = isSaleActive();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
@@ -72,7 +80,7 @@ const Checkout = () => {
                   <div style="font-size: 12px; color: #666;">Quantité : ${item.quantity}</div>
                 </td>
                 <td style="padding: 8px 0; text-align: right; white-space: nowrap;">
-                  ${formatCurrency(item.price * item.quantity)}
+                  ${formatCurrency(getDiscountedPrice(item.price) * item.quantity)}
                 </td>
               </tr>
             `,
@@ -278,12 +286,24 @@ const Checkout = () => {
                     <div>
                       <h3 className="font-semibold mb-2">Articles de la commande</h3>
                       <div className="space-y-2">
-                        {items.map((item) => (
-                          <div key={item.id} className="flex justify-between text-sm">
-                            <span>{item.name} × {item.quantity}</span>
-                            <span>{formatCurrency(item.price * item.quantity)}</span>
-                          </div>
-                        ))}
+                        {items.map((item) => {
+                          const salePrice = getDiscountedPrice(item.price);
+                          const lineTotal = salePrice * item.quantity;
+                          const hasDiscount = salePrice !== item.price;
+                          return (
+                            <div key={item.id} className="flex justify-between text-sm">
+                              <span>{item.name} × {item.quantity}</span>
+                              <div className="text-right">
+                                <span>{formatCurrency(lineTotal)}</span>
+                                {hasDiscount && (
+                                  <span className="block text-xs text-muted-foreground line-through">
+                                    {formatCurrency(item.price * item.quantity)}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                     <div className="flex gap-4">
@@ -307,12 +327,24 @@ const Checkout = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {items.map((item) => (
-                      <div key={item.id} className="flex justify-between text-sm">
-                        <span>{item.name} × {item.quantity}</span>
-                        <span>{formatCurrency(item.price * item.quantity)}</span>
-                      </div>
-                    ))}
+                    {items.map((item) => {
+                      const salePrice = getDiscountedPrice(item.price);
+                      const lineTotal = salePrice * item.quantity;
+                      const hasDiscount = salePrice !== item.price;
+                      return (
+                        <div key={item.id} className="flex justify-between text-sm">
+                          <span>{item.name} × {item.quantity}</span>
+                          <div className="text-right">
+                            <span>{formatCurrency(lineTotal)}</span>
+                            {hasDiscount && (
+                              <span className="block text-xs text-muted-foreground line-through">
+                                {formatCurrency(item.price * item.quantity)}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
                     <div className="pt-3 border-t space-y-2">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Sous-total</span>
@@ -327,6 +359,11 @@ const Checkout = () => {
                           <span>Total</span>
                           <span className="text-primary">{formatCurrency(getCartTotal())}</span>
                         </div>
+                        {saleActive && (
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {SALE_EVENT_NAME} : {salePercentLabel} de remise inclus.
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>

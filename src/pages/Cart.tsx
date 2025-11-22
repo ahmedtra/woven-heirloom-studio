@@ -6,9 +6,17 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
+import {
+  getDiscountedPrice,
+  getSalePercentLabel,
+  isSaleActive,
+  SALE_EVENT_NAME,
+} from "@/lib/pricing";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const saleActive = isSaleActive();
+  const salePercentLabel = getSalePercentLabel();
 
   if (items.length === 0) {
     return (
@@ -45,8 +53,12 @@ const Cart = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
-              {items.map((item) => (
-                <Card key={item.id}>
+              {items.map((item) => {
+                const salePrice = getDiscountedPrice(item.price);
+                const lineTotal = salePrice * item.quantity;
+                const hasDiscount = salePrice !== item.price;
+                return (
+                  <Card key={item.id}>
                   <CardContent className="p-6">
                     <div className="flex gap-6">
                       <div className="w-24 h-24 rounded-lg overflow-hidden bg-muted flex-shrink-0">
@@ -96,13 +108,23 @@ const Cart = () => {
                               <Plus className="h-3 w-3" />
                             </Button>
                           </div>
-                          <p className="font-semibold">{formatCurrency(item.price * item.quantity)}</p>
+                          <div className="text-right">
+                            <p className="font-semibold">
+                              {formatCurrency(lineTotal)}
+                            </p>
+                            {hasDiscount && (
+                              <p className="text-xs text-muted-foreground line-through">
+                                {formatCurrency(item.price * item.quantity)}
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+              );
+              })}
             </div>
 
             {/* Order Summary */}
@@ -125,6 +147,11 @@ const Cart = () => {
                         <span>Total</span>
                         <span className="text-primary">{formatCurrency(getCartTotal())}</span>
                       </div>
+                      {saleActive && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {SALE_EVENT_NAME} : {salePercentLabel} de remise inclus.
+                        </p>
+                      )}
                     </div>
                   </div>
 

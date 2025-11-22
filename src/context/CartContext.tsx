@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { Product } from "@/data/products";
 import { toast } from "@/hooks/use-toast";
+import { getDiscountedPrice } from "@/lib/pricing";
 
 export interface CartItem extends Product {
   quantity: number;
@@ -69,7 +70,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getCartTotal = () => {
-    return items.reduce((total, item) => total + item.price * item.quantity, 0);
+    return items.reduce(
+      (total, item) => total + getDiscountedPrice(item.price) * item.quantity,
+      0
+    );
   };
 
   const getCartCount = () => {
