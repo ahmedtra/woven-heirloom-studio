@@ -94,7 +94,7 @@ export const products: Product[] = [
     price: 160,
     description:
       "Sac à main, forme carrée avec manchettes en bois couleur kaki",
-    images: ["products/7/1.jpeg", "products/7/2.jpeg", "products/7/3.jpeg"],
+    images: ["products/7/1.jpeg"],
     category: "Sac à main",
     material: "Cotton",
     color: "Kaki",
