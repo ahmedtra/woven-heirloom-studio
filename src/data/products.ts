@@ -26,11 +26,11 @@ export const products: Product[] = [
   },
   {
     id: "2",
-        name: "Mini Cabas Mimi",
+    name: "Mini Cabas Mimi",
     price: 145,
     description:
       "Mini Cabas couleur taupe tissé main avec manchettes en bois naturel et attache boheme",
-    images: ["products/2/1.jpeg", "products/2/2.jpeg"],
+    images: ["products/2/1.jpeg", "products/2/2.jpeg", "products/2/3.jpeg"],
     category: "Cabas",
     material: "Coton",
     color: "Taupe",
@@ -82,7 +82,7 @@ export const products: Product[] = [
     price: 130,
     description:
       "Sac bondouliére tissé main portée épaule parfait pour le quotidien.",
-    images: ["products/6/1.jpeg"],
+    images: ["products/6/1.jpeg", "products/6/2.jpeg", "products/6/3.jpeg"],
     category: "Sac Bandouliére",
     material: "Coton",
     color: "Noir",
@@ -136,4 +136,16 @@ export const products: Product[] = [
     color: "Noir",
     availability: "Sur commande",
   },
+  {
+    id: "11",
+    name: "Sac à main Follia",
+    price: 139,
+    description:
+      "Sac a main tressé main, gris avec fleurs",
+    images: ["products/11/1.jpeg", "products/11/2.jpeg", "products/11/3.jpeg"],
+    category: "Sac á main",
+    material: "Coton",
+    color: "gris",
+    availability: "Sur commande",
+  }
 ];
