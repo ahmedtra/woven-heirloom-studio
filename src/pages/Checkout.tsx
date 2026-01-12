@@ -189,7 +189,7 @@ const Checkout = () => {
                           id="fullName"
                           value={shippingInfo.fullName}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, fullName: e.target.value })}
-                          placeholder="Jean Dupont"
+                          placeholder=""
                         />
                       </div>
                       <div>
@@ -199,7 +199,7 @@ const Checkout = () => {
                           type="email"
                           value={shippingInfo.email}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, email: e.target.value })}
-                          placeholder="jean@example.com"
+                          placeholder=""
                         />
                       </div>
                       <div>
@@ -209,7 +209,7 @@ const Checkout = () => {
                           type="tel"
                           value={shippingInfo.phone}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, phone: e.target.value })}
-                          placeholder="+216 00 000 000"
+                          placeholder=""
                         />
                       </div>
                     </div>
@@ -219,7 +219,7 @@ const Checkout = () => {
                         id="address"
                         value={shippingInfo.address}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
-                        placeholder="123 rue Principale"
+                        placeholder=""
                       />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -229,7 +229,7 @@ const Checkout = () => {
                           id="city"
                           value={shippingInfo.city}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, city: e.target.value })}
-                          placeholder="Paris"
+                          placeholder=""
                         />
                       </div>
                       <div>
@@ -238,7 +238,7 @@ const Checkout = () => {
                           id="postalCode"
                           value={shippingInfo.postalCode}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, postalCode: e.target.value })}
-                          placeholder="75001"
+                          placeholder=""
                         />
                     </div>
                     <div>
@@ -247,7 +247,7 @@ const Checkout = () => {
                           id="country"
                           value={shippingInfo.country}
                           onChange={(e) => setShippingInfo({ ...shippingInfo, country: e.target.value })}
-                          placeholder="France"
+                          placeholder=""
                         />
                       </div>
                     </div>
