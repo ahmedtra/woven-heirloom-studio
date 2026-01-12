@@ -8,7 +8,7 @@ export interface Product {
   material: string;
   color: string;
   sizes?: string[];
-  inStock: boolean;
+  availability: string;
 }
 
 export const products: Product[] = [
@@ -22,7 +22,7 @@ export const products: Product[] = [
     category: "Cabas",
     material: "Coton bio",
     color: "Sable",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "2",
@@ -34,7 +34,7 @@ export const products: Product[] = [
     category: "Cabas",
     material: "Coton",
     color: "Taupe",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "3",
@@ -46,7 +46,7 @@ export const products: Product[] = [
     category: "Chapeau",
     material: "Rafia",
     color: "Beige",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "4",
@@ -58,7 +58,7 @@ export const products: Product[] = [
     category: "Cabas",
     material: "Raphia naturelle",
     color: "Taupe",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "5",
@@ -74,7 +74,7 @@ export const products: Product[] = [
     category: "Bandoulière",
     material: "Coton recyclé",
     color: "Terre cuite",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "6",
@@ -86,7 +86,7 @@ export const products: Product[] = [
     category: "Sac Bandouliére",
     material: "Coton",
     color: "Noir",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "7",
@@ -98,7 +98,7 @@ export const products: Product[] = [
     category: "Sac à main",
     material: "Cotton",
     color: "Kaki",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "8",
@@ -110,7 +110,7 @@ export const products: Product[] = [
     category: "Sac à main",
     material: "Coton",
     color: "Blanc cassé",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "9",
@@ -122,7 +122,7 @@ export const products: Product[] = [
     category: "Pochette",
     material: "Cotton",
     color: "Argent",
-    inStock: true,
+    availability: "Sur commande",
   },
   {
     id: "10",
@@ -134,6 +134,6 @@ export const products: Product[] = [
     category: "Sac á main",
     material: "Coton",
     color: "Noir",
-    inStock: true,
+    availability: "Sur commande",
   },
 ];

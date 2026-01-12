@@ -122,7 +122,7 @@ const ProductDetail = () => {
                     <li><span className="font-medium text-foreground">Matière :</span> {product.material}</li>
                     <li><span className="font-medium text-foreground">Couleur :</span> {product.color}</li>
                     <li><span className="font-medium text-foreground">Style :</span> {product.category}</li>
-                    <li><span className="font-medium text-foreground">Disponibilité :</span> {product.inStock ? "En stock" : "Rupture de stock"}</li>
+                    <li><span className="font-medium text-foreground">Disponibilité :</span> {product.availability}</li>
                   </ul>
                 </div>
 
@@ -169,9 +169,8 @@ const ProductDetail = () => {
                   size="lg"
                   className="w-full"
                   onClick={handleAddToCart}
-                  disabled={!product.inStock}
                 >
-                  {product.inStock ? "Ajouter au panier" : "Rupture de stock"}
+                  Ajouter au panier
                 </Button>
               </div>
 
